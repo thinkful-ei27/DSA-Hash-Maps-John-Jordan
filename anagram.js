@@ -4,7 +4,6 @@ const HashMap = require('./hashMap');
 const anagramHash = new HashMap();
 
 function compareHash(hash1, hash2) {
-  console.log(JSON.stringify(hash1._slots), JSON.stringify(hash2._slots));
   return (JSON.stringify(hash1._slots) === JSON.stringify(hash2._slots));
   // return (hash1._slots.join('') === hash2._slots.join(''));
 }
@@ -18,17 +17,25 @@ function anagramGroup(arr) {
     splitWord.forEach(letter => hash.set(letter, 'boop'));
     hashArray.push(hash);
   });
-  console.log(hashArray)
   return hashArray;
 }
 
 function builder(hashArray) {
-  return hashArray.filter(hashMap => compareHash(hashMap, hashArray[0]) === true);
+  let unfilteredArray = [];
+
+  for (let i = 0; i < hashArray.length; i++) {
+    unfilteredArray.push(hashArray.filter(hashMap => compareHash(hashMap, hashArray[i]) === true));
+  }
+
+  // Filter the unfiltered
+  unfilteredArray.sort().filter((a, b) => a !== b );
+  console.log(unfilteredArray);
+  // return hashArray.filter(hashMap => compareHash(hashMap, hashArray[0]) === true);
 }
 
 const array = ['east', 'cars', 'acre', 'arcs', 'teas', 'eats', 'race'];
 
-anagramGroup(array);
+// anagramGroup(array);
 console.log(builder(anagramGroup(array)));
 // console.log(compareHash(hashArray[0], hashArray[4]));
 
