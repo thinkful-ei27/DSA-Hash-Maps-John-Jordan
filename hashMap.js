@@ -1,7 +1,7 @@
 'use strict';
 
 class HashMap {
-  constructor(initialCapacity=8) {
+  constructor(initialCapacity = 8) {
     this.length = 0;
     this._slots = [];
     this._capacity = initialCapacity;
@@ -46,7 +46,7 @@ class HashMap {
     const hash = HashMap._hashString(key);
     const start = hash % this._capacity;
 
-    for (let i=start; i<start + this._capacity; i++) {
+    for (let i = start; i < start + this._capacity; i++) {
       const index = i % this._capacity;
       const slot = this._slots[index];
       if (slot === undefined || (slot.key == key && !slot.deleted)) {
@@ -72,7 +72,7 @@ class HashMap {
 
   static _hashString(string) {
     let hash = 5381;
-    for (let i=0; i<string.length; i++) {
+    for (let i = 0; i < string.length; i++) {
       hash = (hash << 5) + hash + string.charCodeAt(i);
       hash = hash & hash;
     }
@@ -86,17 +86,17 @@ HashMap.SIZE_RATIO = 3;
 // Create a hash map call lor and add the following
 let lor = new HashMap();
 const chars = [
-  {Hobbit: 'Bilbo'},
-  {Hobbit: 'Frodo'},
-  {Wizard: 'Gandalf'},
-  {Human: 'Aragon'},
-  {Elf: 'Legolas'},
-  {Maiar: 'The Necromancer'},
-  {Maiar: 'Sauron'},
-  {RingBearer: 'Gollum'},
-  {LadyOfLight: 'Galadriel'},
-  {HalfElven: 'Arwen'},
-  {Ent: 'Treebeard'},
+  { Hobbit: 'Bilbo' },
+  { Hobbit: 'Frodo' },
+  { Wizard: 'Gandalf' },
+  { Human: 'Aragon' },
+  { Elf: 'Legolas' },
+  { Maiar: 'The Necromancer' },
+  { Maiar: 'Sauron' },
+  { RingBearer: 'Gollum' },
+  { LadyOfLight: 'Galadriel' },
+  { HalfElven: 'Arwen' },
+  { Ent: 'Treebeard' },
 ];
 chars.map(char => {
   const entry = Object.entries(char);
@@ -104,7 +104,7 @@ chars.map(char => {
 });
 
 // Retrieve the value that is hashed in the key Maiar
-console.log(lor.get('Maiar'));
-console.log(lor);
+// console.log(lor.get('Maiar'));
+// console.log(lor);
 
 module.exports = HashMap;
