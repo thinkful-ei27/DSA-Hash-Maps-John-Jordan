@@ -28,8 +28,8 @@ function builder(hashArray) {
   }
 
   // Filter the unfiltered
-  unfilteredArray.sort().filter((a, b) => a !== b );
   console.log(unfilteredArray);
+  // unfilteredArray.sort().filter((a, b) => a !== b );
   // return hashArray.filter(hashMap => compareHash(hashMap, hashArray[0]) === true);
 }
 
