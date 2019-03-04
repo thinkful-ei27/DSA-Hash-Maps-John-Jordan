@@ -8,6 +8,7 @@ const palindromeHash = new HashMap();
 // palindromeHash.set('ornth');
 
 function simpleCheckForFalse(str) {
+  str = str.toLowerCase().replace(/[^a-zA-Z0-9]/g, '');
   const strSplit = str.split('');
   for (let i = 0; i < strSplit.length; i++) {
     palindromeHash.set(strSplit[i], i);
