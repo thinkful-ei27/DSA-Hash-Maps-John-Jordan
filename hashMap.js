@@ -82,3 +82,20 @@ class HashMap {
 
 HashMap.MAX_LOAD_RATIO = 0.9;
 HashMap.SIZE_RATIO = 3;
+
+let lotrHash = new HashMap();
+const chars = [
+  {Hobbit: 'Bilbo'},
+  {Hobbit: 'Frodo'},
+  {Wizard: 'Gandalf'},
+  {Human: 'Aragon'},
+  {Elf: 'Legolas'},
+  {Maiar: 'The Necromancer'},
+  {Maiar: 'Sauron'},
+  {RingBearer: 'Gollum'},
+  {LadyOfLight: 'Galadriel'},
+  {HalfElven: 'Arwen'},
+  {Ent: 'Treebeard'},
+]
+lotrHash.set('Hobbit', 'Bilbo');
+console.log(lotrHash);
