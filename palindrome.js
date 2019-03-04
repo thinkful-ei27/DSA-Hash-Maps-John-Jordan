@@ -20,4 +20,4 @@ function simpleCheckForFalse(str) {
   return true;
 }
 
-console.log(simpleCheckForFalse('amanaplanacanalpanama'));
+console.log(simpleCheckForFalse('a man, a plan, a canal: panama'));
