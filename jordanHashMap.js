@@ -16,19 +16,13 @@ class HashMap {
     return this._slots[index].value;
   }
 
-  set(key, value) {
-    const loadRatio = (this.length + this._deleted + 1) / this._capacity;
-    if (loadRatio > HashMap.MAX_LOAD_RATIO) {
-      this._resize(this._capacity * HashMap.SIZE_RATIO);
+  set(item) {
+    const index = this._findSlot(item.split('').sort().join(''));
+    if (!this._slots[index]) {
+      this._slots[index] = [item];
+    } else {
+      this._slots[index].push(item);
     }
-
-    const index = this._findSlot(key);
-    this._slots[index] = {
-      key,
-      value,
-      deleted: false
-    };
-    this.length++;
   }
 
   remove(key) {
@@ -45,14 +39,14 @@ class HashMap {
   _findSlot(key) {
     const hash = HashMap._hashString(key);
     const start = hash % this._capacity;
-
-    for (let i = start; i < start + this._capacity; i++) {
-      const index = i % this._capacity;
-      const slot = this._slots[index];
-      if (slot === undefined || (slot.key == key && !slot.deleted)) {
-        return index;
-      }
-    }
+    return start;
+    // for (let i = start; i < start + this._capacity; i++) {
+    //   const index = i % this._capacity;
+    //   const slot = this._slots[index];
+    //   if (slot === undefined || (slot.key == key && !slot.deleted)) {
+    //     return index;
+    //   }
+    // }
   }
 
   _resize(size) {
@@ -68,6 +62,10 @@ class HashMap {
         this.set(slot.key, slot.value);
       }
     }
+  }
+
+  display() {
+    return this._slots.filter(item => !!item);
   }
 
   static _hashString(string) {
@@ -117,6 +115,6 @@ function alphebatize(str) {
   return str.split('').sort().join('');
 }
 
-main();
+// main();
 
 module.exports = HashMap;
